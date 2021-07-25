@@ -39,7 +39,7 @@
 <script> 
 
 // initialize your map here 
-var map = L.map('map').setView([41.86, -87.66], 12);
+var map = L.map('map').setView([41.84451, -87.71244], 18);
 
 // add a base layer 
 var Stamen_Toner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.{ext}', {
@@ -49,7 +49,47 @@ var Stamen_Toner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/
     maxZoom: 20,
     ext: 'png'
 }).addTo(map);
-    
+
+//create a variable that pull in a new icon  image
+var myIcon = L.icon({
+    iconUrl: 'StreetVendorBW.jpg',
+    iconSize: [30, 30],
+});
+
+//create markers and give it the icon we created
+var marker = L.marker([41.84451, -87.71244],{
+    icon:myIcon
+    }).addTo(map).bindPopup("Street Vendor 1");
+
+var marker = L.marker([41.844482, -87.712268],{
+    icon:myIcon
+    }).addTo(map).bindPopup("Street Vendor 2");
+
+var marker = L.marker([41.844350, -87.712268],{
+    icon:myIcon
+}).addTo(map).bindPopup("Street Vendor 3")
+
+
+//create a polygon and style
+var polygon = L.polygon([
+    [41.84452, -87.71248],
+    [41.84452, -87.71205],
+    [41.84434, -87.71171],
+    [41.84433, -87.71248],
+], {
+    color: 'green',
+    fillColor: 'yellow',
+    fillOpacity: .11,
+}).addTo(map).bindPopup("Available ROW space between building footprints");
+
+//create a line
+var line = L.polyline([
+    [41.84450, -87.71251],
+    [41.84433, -87.71251],
+
+]).addTo(map).bindPopup("66-foot wide ROW");
+
+
 </script>
    
 </div>
